@@ -1,15 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "tailwindcss";
+@plugin "daisyui";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: "Courier New", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +18,37 @@
   }
 }
 
-body {
+body, html {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  width: 100%;
+  overflow-y: scroll; /* always allow scrolling */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+}
+
+/* Hide scrollbar globally */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+/* Drawer open state class */
+html.drawer-open {
+  /* No overflow or padding changes needed since scrollbar hidden */
+}
+
+/* Ensure drawer-side has no visible scrollbar */
+.drawer-side {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.drawer-side::-webkit-scrollbar {
+  display: none;
+  width: 0;
 }
